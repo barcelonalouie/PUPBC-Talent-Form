@@ -1,0 +1,151 @@
+/* --- Global Reset & Center Alignment --- */
+:root {
+  --emerald: #2ecc71;
+  --dark-emerald: #1a7147;
+  --bg-dark-overlay: rgba(10, 10, 10, 0.78); 
+  --card-bg: rgba(25, 25, 25, 0.82);
+}
+
+/* Force the body to be a flex container that fills the entire viewport */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #ffffff;
+  overflow-x: hidden;
+
+  /* --- THE IMAGE FIX --- */
+  /* If your CSS is in src/components/ or src/, 
+     try using ../assets/ to "jump out" to the assets folder */
+  background: linear-gradient(var(--bg-dark-overlay), var(--bg-dark-overlay)), 
+              url('../src/assets/PUPBC_Aerial.jpg') no-repeat center center fixed;
+  background-size: cover;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- The Main Card: Glassmorphism + Neon Glow --- */
+.form-container {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  width: 95%;
+  max-width: 500px;
+  margin: 20px auto; 
+  border-radius: 28px;
+  border: 1px solid rgba(46, 204, 113, 0.25);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 50px rgba(46, 204, 113, 0.15);
+  padding: 45px 30px;
+  text-align: center;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* --- Title Fix: Prevents Clipping & Adds Gradient --- */
+.form-container h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #2ecc71, #a8e063);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  line-height: 1.5; /* Breathability for PUPBC title */
+  padding-bottom: 12px;   
+  margin: 0 auto 10px auto;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+}
+
+.form-container p {
+  color: #d0d0d0;
+  margin-bottom: 40px;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+/* --- Field Blocks --- */
+.form-field {
+  margin-bottom: 22px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-field:hover {
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateY(-3px);
+  border-color: rgba(46, 204, 113, 0.4);
+}
+
+.form-field label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--emerald);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+
+/* --- Inputs & Dark Select Styling --- */
+.form-field input, 
+.form-field select {
+  width: 100%;
+  background-color: #121212; 
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 14px;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s;
+  box-sizing: border-box; 
+}
+
+/* Dropdown Menu (Dark Mode Fix) */
+.form-field select option {
+  background-color: #1a1a1a; 
+  color: #ffffff;
+}
+
+.form-field input:focus, 
+.form-field select:focus {
+  border-color: var(--emerald);
+  background-color: #181818;
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
+}
+
+/* --- Submit Button --- */
+.Submit-btn {
+  width: 100%;
+  padding: 18px;
+  margin-top: 30px;
+  background: var(--emerald);
+  border: none;
+  border-radius: 16px;
+  color: #000000;
+  font-weight: 900;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+}
+
+.Submit-btn:hover {
+  background: #27ae60;
+  box-shadow: 0 0 30px rgba(46, 204, 113, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Entrance Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
