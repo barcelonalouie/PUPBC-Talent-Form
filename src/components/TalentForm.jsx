@@ -41,6 +41,7 @@ const TalentForm = () => {
       <p>Fill out the details below if you're interested</p>
 
       <form onSubmit={handleSubmit}>
+        
         {/* Name input Field */}
         <div className="form-field">
           <label htmlFor="name">Name</label>
@@ -55,7 +56,7 @@ const TalentForm = () => {
           />
         </div>
 
-        {/* Age input Field - ADDED THIS */}
+        {/* Age input Field */}
         <div className="form-field">
           <label htmlFor="age">Age</label>
           <input
