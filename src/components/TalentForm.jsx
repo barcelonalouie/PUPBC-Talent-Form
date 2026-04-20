@@ -17,7 +17,7 @@ const TalentForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.talent) {
@@ -25,14 +25,36 @@ const TalentForm = () => {
       return;
     }
 
-    console.log("Form Data Submitted: ", formData);
+    try {
+      const response = await fetch("https://barcelonaapi-ebeebdgbabc6fjbj.southeastasia-01.azurewebsites.net/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setFormData({
-      name: "",
-      age: "",
-      email: "",
-      talent: ""
-    });
+      const result = await response.json();
+
+      if (response.ok) {
+        // This confirms it reached the DB
+        alert("Success! Form Submitted Successfully.");
+        console.log("Server Response: ", result);
+
+        // Clear the form only on success
+        setFormData({
+          name: "",
+          age: "",
+          email: "",
+          talent: ""
+        });
+      } else {
+        alert("Server error: " + (result.message || "Failed to submit"));
+      }
+    } catch (error) {
+      console.error("Connection error:", error);
+      alert("Could not connect to the API. Make sure your Azure server is running!");
+    }
   };
 
   return (
@@ -41,7 +63,6 @@ const TalentForm = () => {
       <p>Fill out the details below if you're interested</p>
 
       <form onSubmit={handleSubmit}>
-        {/* Name input Field */}
         <div className="form-field">
           <label htmlFor="name">Name</label>
           <input
@@ -55,7 +76,6 @@ const TalentForm = () => {
           />
         </div>
 
-        {/* Age input Field - ADDED THIS */}
         <div className="form-field">
           <label htmlFor="age">Age</label>
           <input
@@ -69,7 +89,6 @@ const TalentForm = () => {
           />
         </div>
 
-        {/* Email input Field */}
         <div className="form-field">
           <label htmlFor="email">Email</label>
           <input
@@ -83,7 +102,6 @@ const TalentForm = () => {
           />
         </div>
 
-        {/* Talent input Field */}
         <div className="form-field">
           <label htmlFor="talent">Talent</label>
           <select
@@ -102,7 +120,6 @@ const TalentForm = () => {
           </select>
         </div>
 
-        {/* Submit Button */}
         <button type="submit" className="Submit-btn">
           Submit
         </button>
