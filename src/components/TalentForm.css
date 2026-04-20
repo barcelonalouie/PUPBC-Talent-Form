@@ -15,9 +15,10 @@ body {
   color: #ffffff;
   overflow-x: hidden;
 
-  /* --- IMAGE --- */
+  /* --- IMAGE FIXED FOR DEPLOYMENT --- */
+  /* We use /PUPBC_Aerial.jpg because it is now in the public folder */
   background: linear-gradient(var(--bg-dark-overlay), var(--bg-dark-overlay)), 
-              url('../src/assets/PUPBC_Aerial.jpg') no-repeat center center fixed;
+              url('/PUPBC_Aerial.jpg') no-repeat center center fixed;
   background-size: cover;
   
   display: flex;
