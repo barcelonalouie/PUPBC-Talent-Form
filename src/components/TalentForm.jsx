@@ -37,11 +37,9 @@ const TalentForm = () => {
       const result = await response.json();
 
       if (response.ok) {
-        // This confirms it reached the DB
         alert("Success! Form Submitted Successfully.");
-        console.log("Server Response: ", result);
+        console.log("API Response: ", result);
 
-        // Clear the form only on success
         setFormData({
           name: "",
           age: "",
