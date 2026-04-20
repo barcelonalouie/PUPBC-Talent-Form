@@ -16,8 +16,7 @@ const TalentForm = () => {
       [name]: value,
     });
   };
-
-  // I added 'async' here so we can wait for the server's response
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,7 +26,6 @@ const TalentForm = () => {
     }
 
     try {
-      // This is the bridge to your live backend
       const response = await fetch("https://barcelonaapi-ebeebdgbabc6fjbj.southeastasia-01.azurewebsites.net/submit", {
         method: "POST",
         headers: {
@@ -39,7 +37,7 @@ const TalentForm = () => {
       const result = await response.json();
 
       if (response.ok) {
-        // This confirms it reached the DB!
+        // This confirms it reached the DB
         alert("Success! Form Submitted Successfully.");
         console.log("Server Response: ", result);
 
